@@ -1,0 +1,285 @@
+﻿@model Tarea2.Models.AnimalDraft
+@{
+    ViewBag.Title = "Registrar Animal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    int step = 1;
+    if (ViewBag.Step != null)
+    {
+        int.TryParse(ViewBag.Step.ToString(), out step);
+
+        if (step < 1)
+        {
+            step = 1;
+        }
+
+        if (step > 3)
+        {
+            step = 3;
+        }
+    }
+
+    var w1 = (step >= 1) ? "100%" : "0%";
+    var w2 = (step >= 2) ? "100%" : "0%";
+    var w3 = (step >= 3) ? "100%" : "0%";
+}
+
+<div class="container">
+    <div class="card">
+        <h1>Registro de Animal</h1>
+        <p class="sub">Flujo de 3 pasos. Los datos se conservan al volver atrás y recargar.</p>
+
+        <div class="progress">
+            <div class="step"><span style="width:@w1"></span></div>
+            <div class="step"><span style="width:@w2"></span></div>
+            <div class="step"><span style="width:@w3"></span></div>
+            <span class="pill">Paso @step de 3</span>
+        </div>
+
+        <div id="msg" class="msg" style="display:none;"></div>
+
+        <!-- Hidden draft completo -->
+        <input type="hidden" id="H_Nombre" value="@Model.Nombre" />
+        <input type="hidden" id="H_Especie" value="@Model.Especie" />
+        <input type="hidden" id="H_Raza" value="@Model.Raza" />
+        <input type="hidden" id="H_EdadAprox" value="@Model.EdadAprox" />
+        <input type="hidden" id="H_Sexo" value="@Model.Sexo" />
+        <input type="hidden" id="H_Color" value="@Model.Color" />
+
+        <input type="hidden" id="H_MotivoIngreso" value="@Model.MotivoIngreso" />
+        <input type="hidden" id="H_Temperamento" value="@Model.Temperamento" />
+        <input type="hidden" id="H_NecesidadesMedicas" value="@Model.NecesidadesMedicas" />
+        <input type="hidden" id="H_HistorialVacunas" value="@Model.HistorialVacunas" />
+        <input type="hidden" id="H_EstadoSaludIngreso" value="@Model.EstadoSaludIngreso" />
+
+        <input type="hidden" id="H_RescatistaNombre" value="@Model.RescatistaNombre" />
+        <input type="hidden" id="H_RescatistaTelefono" value="@Model.RescatistaTelefono" />
+        <input type="hidden" id="H_RescatistaCorreo" value="@Model.RescatistaCorreo" />
+
+        @if (step == 1)
+        {
+            <div class="grid">
+                <div class="field">
+                    <label>Nombre (opcional)</label>
+                    <input id="Nombre" value="@Model.Nombre" />
+                </div>
+
+                <div class="field">
+                    <label>Especie (obligatorio)</label>
+                    <select id="Especie">
+                        <option value="">Seleccione...</option>
+                        <option value="Perro" @(Model.Especie == "Perro" ? "selected" : "")>Perro</option>
+                        <option value="Gato" @(Model.Especie == "Gato" ? "selected" : "")>Gato</option>
+                        <option value="Roedor" @(Model.Especie == "Roedor" ? "selected" : "")>Roedor</option>
+                        <option value="Conejo" @(Model.Especie == "Conejo" ? "selected" : "")>Conejo</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Raza (opcional)</label>
+                    <input id="Raza" value="@Model.Raza" />
+                </div>
+
+                <div class="field">
+                    <label>Edad aproximada (obligatorio)</label>
+                    <input id="EdadAprox" value="@Model.EdadAprox" />
+                </div>
+
+                <div class="field">
+                    <label>Sexo</label>
+                    <select id="Sexo">
+                        <option value="">N/D</option>
+                        <option value="Macho" @(Model.Sexo == "Macho" ? "selected" : "")>Macho</option>
+                        <option value="Hembra" @(Model.Sexo == "Hembra" ? "selected" : "")>Hembra</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Color</label>
+                    <input id="Color" value="@Model.Color" />
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="btn primary" id="next1" type="button">Siguiente</button>
+            </div>
+        }
+
+        @if (step == 2)
+        {
+            <div class="grid">
+                <div class="field">
+                    <label>Motivo de ingreso (obligatorio)</label>
+                    <input id="MotivoIngreso" value="@Model.MotivoIngreso" />
+                </div>
+
+                <div class="field">
+                    <label>Temperamento (obligatorio)</label>
+                    <select id="Temperamento">
+                        <option value="">Seleccione...</option>
+                        <option value="Docil" @(Model.Temperamento == "Docil" ? "selected" : "")>Dócil</option>
+                        <option value="Agresivo" @(Model.Temperamento == "Agresivo" ? "selected" : "")>Agresivo</option>
+                        <option value="Miedoso" @(Model.Temperamento == "Miedoso" ? "selected" : "")>Miedoso</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Necesidades médicas inmediatas (obligatorio)</label>
+                    <input id="NecesidadesMedicas" value="@Model.NecesidadesMedicas" />
+                </div>
+
+                <div class="field">
+                    <label>Historial de vacunación (opcional)</label>
+                    <input id="HistorialVacunas" value="@Model.HistorialVacunas" />
+                </div>
+
+                <div class="field" style="grid-column:1/-1;">
+                    <label>Descripción del estado de salud al momento de ingreso (obligatorio)</label>
+                    <textarea id="EstadoSaludIngreso">@Model.EstadoSaludIngreso</textarea>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="btn" id="back2" type="button">Atrás</button>
+                <button class="btn primary" id="next2" type="button">Siguiente</button>
+            </div>
+
+        }
+
+        @if (step == 3)
+        {
+            <div class="grid">
+                <div class="field">
+                    <label>Nombre completo del rescatista (obligatorio)</label>
+                    <input id="RescatistaNombre" value="@Model.RescatistaNombre" />
+                </div>
+
+                <div class="field">
+                    <label>Teléfono (obligatorio)</label>
+                    <input id="RescatistaTelefono" value="@Model.RescatistaTelefono" />
+                </div>
+
+                <div class="field">
+                    <label>Correo (opcional)</label>
+                    <input id="RescatistaCorreo" value="@Model.RescatistaCorreo" />
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="btn" id="back3" type="button">Atrás</button>
+                <button class="btn primary" id="finish" type="button">Finalizar</button>
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts{
+    <script>
+function showMsg(t){ $("#msg").text(t).show(); }
+function clearMsg(){ $("#msg").hide().text(""); }
+
+function syncToHidden(){
+  if ($("#Nombre").length) $("#H_Nombre").val($("#Nombre").val());
+  if ($("#Especie").length) $("#H_Especie").val($("#Especie").val());
+  if ($("#Raza").length) $("#H_Raza").val($("#Raza").val());
+  if ($("#EdadAprox").length) $("#H_EdadAprox").val($("#EdadAprox").val());
+  if ($("#Sexo").length) $("#H_Sexo").val($("#Sexo").val());
+  if ($("#Color").length) $("#H_Color").val($("#Color").val());
+
+  if ($("#MotivoIngreso").length) $("#H_MotivoIngreso").val($("#MotivoIngreso").val());
+  if ($("#Temperamento").length) $("#H_Temperamento").val($("#Temperamento").val());
+  if ($("#NecesidadesMedicas").length) $("#H_NecesidadesMedicas").val($("#NecesidadesMedicas").val());
+  if ($("#HistorialVacunas").length) $("#H_HistorialVacunas").val($("#HistorialVacunas").val());
+  if ($("#EstadoSaludIngreso").length) $("#H_EstadoSaludIngreso").val($("#EstadoSaludIngreso").val());
+
+  if ($("#RescatistaNombre").length) $("#H_RescatistaNombre").val($("#RescatistaNombre").val());
+  if ($("#RescatistaTelefono").length) $("#H_RescatistaTelefono").val($("#RescatistaTelefono").val());
+  if ($("#RescatistaCorreo").length) $("#H_RescatistaCorreo").val($("#RescatistaCorreo").val());
+}
+
+function payload(){
+  return {
+    Nombre: $("#H_Nombre").val(),
+    Especie: $("#H_Especie").val(),
+    Raza: $("#H_Raza").val(),
+    EdadAprox: $("#H_EdadAprox").val(),
+    Sexo: $("#H_Sexo").val(),
+    Color: $("#H_Color").val(),
+
+    MotivoIngreso: $("#H_MotivoIngreso").val(),
+    Temperamento: $("#H_Temperamento").val(),
+    NecesidadesMedicas: $("#H_NecesidadesMedicas").val(),
+    HistorialVacunas: $("#H_HistorialVacunas").val(),
+    EstadoSaludIngreso: $("#H_EstadoSaludIngreso").val(),
+
+    RescatistaNombre: $("#H_RescatistaNombre").val(),
+    RescatistaTelefono: $("#H_RescatistaTelefono").val(),
+    RescatistaCorreo: $("#H_RescatistaCorreo").val()
+  };
+}
+
+function saveDraft(nextUrl){
+  clearMsg();
+  syncToHidden();
+
+  $.ajax({
+    url: "@Url.Action("SaveDraft","Animals")",
+    method: "POST",
+    data: payload(),
+    success: function(r){
+      if(!r || r.ok !== true){
+        showMsg((r && r.msg) ? r.msg : "No se pudo guardar el borrador.");
+        return;
+      }
+      if(nextUrl) window.location = nextUrl;
+    },
+    error: function(){
+      showMsg("Error guardando borrador (App_Data sin permisos o JSON inválido).");
+    }
+  });
+}
+
+$("#next1").on("click", function(){
+  if(!$("#Especie").val() || !$("#EdadAprox").val()){
+    showMsg("Complete Especie y Edad aproximada.");
+    return;
+  }
+  saveDraft("@Url.Action("Register","Animals", new { step = 2 })");
+});
+
+$("#back2").on("click", function(){
+  saveDraft("@Url.Action("Register","Animals", new { step = 1 })");
+});
+
+$("#next2").on("click", function(){
+  if(!$("#MotivoIngreso").val() || !$("#Temperamento").val() || !$("#NecesidadesMedicas").val() || !$("#EstadoSaludIngreso").val()){
+    showMsg("Complete Motivo, Temperamento, Necesidades médicas y Estado de salud.");
+    return;
+  }
+  saveDraft("@Url.Action("Register","Animals", new { step = 3 })");
+});
+
+$("#back3").on("click", function(){
+  saveDraft("@Url.Action("Register","Animals", new { step = 2 })");
+});
+
+$("#finish").on("click", function(){
+  if(!$("#RescatistaNombre").val() || !$("#RescatistaTelefono").val()){
+    showMsg("Complete Nombre y Teléfono del rescatista.");
+    return;
+  }
+
+  saveDraft(null);
+
+  $.post("@Url.Action("FinalizeDraft","Animals")", function(r){
+    if(!r || r.ok !== true){
+      showMsg((r && r.msg) ? r.msg : "No se pudo finalizar.");
+      return;
+    }
+    window.location = "@Url.Action("Details","Animals")?id=" + r.id;
+  }).fail(function(){
+    showMsg("Error finalizando.");
+  });
+});
+    </script>
+}

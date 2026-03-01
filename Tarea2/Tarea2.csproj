@@ -178,9 +178,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
+    <Content Include="Views\Animals\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Animals\" />
     <Folder Include="Views\Meds\" />
     <Folder Include="Views\Treatments\" />
   </ItemGroup>
