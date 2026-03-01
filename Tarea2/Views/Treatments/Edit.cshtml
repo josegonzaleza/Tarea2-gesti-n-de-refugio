@@ -1,0 +1,88 @@
+﻿@model Tarea2.Models.Treatment
+@{
+    ViewBag.Title = "Editar Tratamiento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var meds = (System.Collections.Generic.List<Tarea2.Models.MedItem>)ViewBag.Meds;
+    var animalId = (string)ViewBag.AnimalId;
+}
+
+<div class="container">
+    <div class="card">
+        <h1>Editar Tratamiento</h1>
+
+        <div id="tMsg" class="msg" style="display:none;"></div>
+
+        <form id="frmEditT">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="animalId" value="@animalId" />
+            <input type="hidden" name="id" value="@Model.Id" />
+
+            <div class="grid">
+                <div class="field">
+                    <label>Fecha</label>
+                    <input type="date" name="date" value="@Model.Date.ToString("yyyy-MM-dd")" />
+                </div>
+
+                <div class="field">
+                    <label>Tipo</label>
+                    <select name="type">
+                        <option value="">Seleccione...</option>
+                        <option value="Medicamento" @(Model.Type == "Medicamento" ? "selected" : "")>Medicamento</option>
+                        <option value="Cirugía" @(Model.Type == "Cirugía" ? "selected" : "")>Cirugía</option>
+                        <option value="Vacuna" @(Model.Type == "Vacuna" ? "selected" : "")>Vacuna</option>
+                        <option value="Curación" @(Model.Type == "Curación" ? "selected" : "")>Curación</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Medicamento</label>
+                    <select name="medicineId">
+                        <option value="">Seleccione...</option>
+                        @foreach (var m in meds)
+                        {
+                            <option value="@m.id" @(Model.MedicineId == m.id ? "selected" : "")>@m.name</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Dosis</label>
+                    <input name="dose" value="@Model.Dose" />
+                </div>
+
+                <div class="field" style="grid-column:1/-1;">
+                    <label>Observaciones</label>
+                    <textarea name="observations">@Model.Observations</textarea>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="btn primary" type="submit">Guardar cambios (Ajax)</button>
+                <a class="btn" href="@Url.Action("Details","Animals", new { id = animalId })">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+function showTMsg(t){ $("#tMsg").text(t).show(); }
+
+$("#frmEditT").on("submit", function(e){
+  e.preventDefault();
+  $.ajax({
+    url: "@Url.Action("EditJson","Treatments")",
+    method: "POST",
+    data: $(this).serialize(),
+    success: function(r){
+      if(r && r.ok){
+        window.location = "@Url.Action("Details","Animals", new { id = animalId })";
+      } else {
+        showTMsg((r && r.msg) ? r.msg : "No se pudo guardar.");
+      }
+    },
+    error: function(){ showTMsg("Error servidor."); }
+  });
+});
+    </script>
+}

@@ -183,6 +183,7 @@
     <Content Include="Views\Animals\Details.cshtml" />
     <Content Include="Views\Meds\Index.cshtml" />
     <Content Include="Views\Treatments\Add.cshtml" />
+    <Content Include="Views\Treatments\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
