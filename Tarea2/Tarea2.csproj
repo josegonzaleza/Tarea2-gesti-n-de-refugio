@@ -179,6 +179,7 @@
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Animals\Register.cshtml" />
+    <Content Include="Views\Animals\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Meds\" />

@@ -1,0 +1,49 @@
+﻿@model System.Collections.Generic.List<Tarea2.Models.AnimalRecord>
+@{
+    ViewBag.Title = "Animales";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="card">
+        <h1>Lista de Animales Activos</h1>
+        <p class="sub">Seleccione uno para ver el expediente.</p>
+
+        <div class="table-wrap">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="col-id">Expediente</th>
+                        <th class="col-species">Especie</th>
+                        <th class="col-name">Nombre</th>
+                        <th class="td-actions">Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model == null || Model.Count == 0)
+                    {
+                        <tr><td colspan="4">No hay animales activos.</td></tr>
+                    }
+                    else
+                    {
+                        foreach (var a in Model)
+                        {
+                            <tr>
+                                <td class="col-id"><span class="pill">@a.Expediente</span></td>
+                                <td class="col-species"><span class="pill">@a.Especie</span></td>
+                                <td class="col-name"><b>@a.Nombre</b></td>
+                                <td class="td-actions">
+                                    <a class="btn primary" href="@Url.Action("Details","Animals", new { id = a.Id })">Abrir</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="actions">
+            <a class="btn" href="@Url.Action("Index","Dashboard")">Volver</a>
+        </div>
+    </div>
+</div>
