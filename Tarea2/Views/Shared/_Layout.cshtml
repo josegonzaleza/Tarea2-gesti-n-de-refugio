@@ -1,43 +1,47 @@
-﻿<!DOCTYPE html>
-<html>
+﻿@{
+    var title = (ViewBag.Title ?? "Tarea 2") + " - Tarea2";
+    var user = Session["user"] as Tarea2.Models.UserSession;
+    var role = (user != null ? (user.Role ?? "") : "");
+    bool isAdmin = role.Equals("Admin", System.StringComparison.OrdinalIgnoreCase);
+}
+
+<!doctype html>
+<html lang="es">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@title</title>
+
+    <link rel="stylesheet" href="@Url.Content("~/Content/site.css")?v=@DateTime.Now.Ticks" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <header class="topbar">
+        <div class="topbar__inner">
+            <div class="brand">
+                <span class="brand__dot"></span>
+                <span class="brand__text">Tarea 2 · Refugio</span>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                </ul>
-            </div>
+
+            <nav class="nav">
+                <a class="nav__link" href="@Url.Action("Index","Dashboard")">Dashboard</a>
+                <a class="nav__link" href="@Url.Action("List","Animals")">Animales</a>
+
+                @if (isAdmin)
+                {
+                    <a class="nav__link" href="@Url.Action("Register","Animals", new { step = 1 })">Registrar</a>
+                    <a class="nav__link" href="@Url.Action("Index","Meds")">Medicamentos</a>
+                }
+
+                <a class="nav__link nav__link--danger" href="@Url.Action("Logout","Auth")">Salir</a>
+            </nav>
         </div>
-    </div>
-    <div class="container body-content">
+    </header>
+
+    <main class="page">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
-        </footer>
-    </div>
+    </main>
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>
