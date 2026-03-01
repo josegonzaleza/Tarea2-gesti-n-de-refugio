@@ -126,6 +126,7 @@
     </Compile>
     <Compile Include="Models\AnimalDraft.cs" />
     <Compile Include="Models\AnimalRecord.cs" />
+    <Compile Include="Models\RescuerInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
