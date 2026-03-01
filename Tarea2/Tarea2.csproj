@@ -180,6 +180,7 @@
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Animals\Register.cshtml" />
     <Content Include="Views\Animals\List.cshtml" />
+    <Content Include="Views\Animals\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Meds\" />
