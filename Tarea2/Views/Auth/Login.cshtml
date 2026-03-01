@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="card">
+        <h1>Ingreso al Sistema</h1>
+        <p class="sub">Usuario/Correo y Contraseña.</p>
+
+        @using (Html.BeginForm("Login", "Auth", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="field">
+                <label>Usuario o Correo</label>
+                <input type="text" name="email" autocomplete="username" />
+            </div>
+
+            <div class="field">
+                <label>Contraseña</label>
+                <div class="row">
+                    <input id="pwd" type="password" name="password" autocomplete="current-password" />
+                    <button type="button" id="btnEye" class="btn" style="padding:10px 12px;">👁</button>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="btn primary" type="submit">Ingresar</button>
+            </div>
+
+            if (ViewBag.Error != null)
+            {
+                <div class="msg">@ViewBag.Error</div>
+            }
+
+            <hr />
+        }
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $(function () {
+            $("#btnEye").on("click", function () {
+                const $p = $("#pwd");
+                const isPass = $p.attr("type") === "password";
+                $p.attr("type", isPass ? "text" : "password");
+                $(this).text(isPass ? "🔒" : "👁️");
+            });
+        });
+    </script>
+} 
