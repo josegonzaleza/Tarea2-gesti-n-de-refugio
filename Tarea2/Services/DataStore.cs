@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Tarea2.Services
+﻿namespace Tarea2.Services
 {
-    public class DataStore
+    public static class DataStore
     {
+        public static void EnsureSeed()
+        {
+            new JsonUserStore().EnsureSeed();
+            new JsonMedsStore().EnsureSeed();
+        }
     }
 }
