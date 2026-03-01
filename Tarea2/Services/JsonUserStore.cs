@@ -38,6 +38,7 @@ namespace Tarea2.Services
 
             users = new List<UserRow>
             {
+                //Usuarios quemados al no pedirse en el doumento gestion de usuarios se crean por el sistema
                 new UserRow{ email="admin@refugio.com", password="Admin123", role="Admin" },
                 new UserRow{ email="cuidador@refugio.com", password="Cuidador123", role="Cuidador" }
             };
