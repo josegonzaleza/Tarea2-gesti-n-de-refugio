@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var role = (string)ViewBag.Role;
+    var email = (string)ViewBag.Email;
+}
+
+<div class="container">
+    <div class="card">
+        <h1>Dashboard</h1>
+        <p class="sub">Sesión: <span class="pill">@email</span> · Rol: <span class="pill">@role</span></p>
+
+        <div class="actions">
+            <a class="btn" href="@Url.Action("List","Animals")">Ver Animales</a>
+
+            @if ((role ?? "") == "Admin")
+            {
+                <a class="btn primary" href="@Url.Action("Register","Animals", new { step = 1 })">Registrar Animal (Admin)</a>
+            }
+
+            <a class="btn" href="@Url.Action("Index","Meds")">Medicamentos</a>
+        </div>
+    </div>
+</div>
