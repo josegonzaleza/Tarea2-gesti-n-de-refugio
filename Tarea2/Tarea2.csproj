@@ -182,10 +182,9 @@
     <Content Include="Views\Animals\List.cshtml" />
     <Content Include="Views\Animals\Details.cshtml" />
     <Content Include="Views\Meds\Index.cshtml" />
+    <Content Include="Views\Treatments\Add.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Treatments\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
