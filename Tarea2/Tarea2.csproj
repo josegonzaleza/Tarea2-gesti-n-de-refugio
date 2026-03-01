@@ -124,6 +124,7 @@
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MedsController.cs" />
     <Compile Include="Filters\RequireAuthAttribute.cs" />
     <Compile Include="Filters\RequireRoleAttribute.cs" />
     <Compile Include="Global.asax.cs">
