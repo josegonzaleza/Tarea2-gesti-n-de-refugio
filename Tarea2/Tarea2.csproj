@@ -181,9 +181,9 @@
     <Content Include="Views\Animals\Register.cshtml" />
     <Content Include="Views\Animals\List.cshtml" />
     <Content Include="Views\Animals\Details.cshtml" />
+    <Content Include="Views\Meds\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Meds\" />
     <Folder Include="Views\Treatments\" />
   </ItemGroup>
   <ItemGroup>
