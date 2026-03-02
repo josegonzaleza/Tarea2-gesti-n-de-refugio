@@ -25,10 +25,10 @@
             @Html.HiddenFor(m => m.RegistradoPor)
 
             <div class="grid">
-                <div class="field"><label>Nombre (d)</label>@Html.TextBoxFor(m => m.Nombre)</div>
+                <div class="field"><label>Nombre</label>@Html.TextBoxFor(m => m.Nombre)</div>
 
                 <div class="field">
-                    <label>Especie (e) - solo permitido</label>
+                    <label>Especie</label>
                     <select name="Especie">
                         <option value="">Seleccione...</option>
                         @foreach (var s in allowed)
@@ -38,36 +38,36 @@
                     </select>
                 </div>
 
-                <div class="field"><label>Raza (f)</label>@Html.TextBoxFor(m => m.Raza)</div>
-                <div class="field"><label>Edad aproximada (g)</label>@Html.TextBoxFor(m => m.EdadAprox)</div>
-                <div class="field"><label>Sexo (h)</label>@Html.TextBoxFor(m => m.Sexo)</div>
-                <div class="field"><label>Color (i)</label>@Html.TextBoxFor(m => m.Color)</div>
+                <div class="field"><label>Raza</label>@Html.TextBoxFor(m => m.Raza)</div>
+                <div class="field"><label>Edad aproximada</label>@Html.TextBoxFor(m => m.EdadAprox)</div>
+                <div class="field"><label>Sexo</label>@Html.TextBoxFor(m => m.Sexo)</div>
+                <div class="field"><label>Color</label>@Html.TextBoxFor(m => m.Color)</div>
 
-                <div class="field"><label>Motivo ingreso (j)</label>@Html.TextBoxFor(m => m.MotivoIngreso)</div>
-                <div class="field"><label>Temperamento (k)</label>@Html.TextBoxFor(m => m.Temperamento)</div>
-                <div class="field"><label>Necesidades médicas (l)</label>@Html.TextBoxFor(m => m.NecesidadesMedicas)</div>
-                <div class="field"><label>Historial vacunas (m)</label>@Html.TextBoxFor(m => m.HistorialVacunas)</div>
+                <div class="field"><label>Motivo ingreso</label>@Html.TextBoxFor(m => m.MotivoIngreso)</div>
+                <div class="field"><label>Temperamento</label>@Html.TextBoxFor(m => m.Temperamento)</div>
+                <div class="field"><label>Necesidades médicas</label>@Html.TextBoxFor(m => m.NecesidadesMedicas)</div>
+                <div class="field"><label>Historial vacunas</label>@Html.TextBoxFor(m => m.HistorialVacunas)</div>
 
                 <div class="field" style="grid-column:1/-1;">
                     <label>Descripción del estado de salud al ingreso</label>
                     <textarea name="EstadoSaludIngreso">@Model.EstadoSaludIngreso</textarea>
                 </div>
 
-                <div class="field"><label>Rescatista nombre (n)</label>@Html.TextBoxFor(m => m.Rescatista.FullName)</div>
-                <div class="field"><label>Rescatista teléfono (n)</label>@Html.TextBoxFor(m => m.Rescatista.Phone)</div>
-                <div class="field"><label>Rescatista correo (n)</label>@Html.TextBoxFor(m => m.Rescatista.Email)</div>
+                <div class="field"><label>Rescatista nombre</label>@Html.TextBoxFor(m => m.Rescatista.FullName)</div>
+                <div class="field"><label>Rescatista teléfono</label>@Html.TextBoxFor(m => m.Rescatista.Phone)</div>
+                <div class="field"><label>Rescatista correo</label>@Html.TextBoxFor(m => m.Rescatista.Email)</div>
             </div>
 
             <div class="actions">
-                <button class="btn primary" type="submit">Guardar (Ajax)</button>
+                <button class="btn primary" type="submit">Guardar</button>
                 <a class="btn" href="@Url.Action("List","Animals")">Volver</a>
             </div>
         </form>
 
         <hr />
 
-        <h1 style="font-size:18px;margin-top:0;">Tratamientos (o)</h1>
-        <p class="sub">Lista solo lectura. Seleccione para modificar.</p>
+        <h1 style="font-size:18px;margin-top:0;">Tratamientos</h1>
+        <p class="sub">Presione el boton modificar o agregar tratamiento según lo requiera.</p>
 
         <table class="table">
             <thead>

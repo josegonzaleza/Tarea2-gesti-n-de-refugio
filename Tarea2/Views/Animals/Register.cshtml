@@ -60,12 +60,12 @@
         {
             <div class="grid">
                 <div class="field">
-                    <label>Nombre (opcional)</label>
+                    <label>Nombre</label>
                     <input id="Nombre" value="@Model.Nombre" />
                 </div>
 
                 <div class="field">
-                    <label>Especie (obligatorio)</label>
+                    <label>Especie</label>
                     <select id="Especie">
                         <option value="">Seleccione...</option>
                         <option value="Perro" @(Model.Especie == "Perro" ? "selected" : "")>Perro</option>
@@ -76,12 +76,12 @@
                 </div>
 
                 <div class="field">
-                    <label>Raza (opcional)</label>
+                    <label>Raza</label>
                     <input id="Raza" value="@Model.Raza" />
                 </div>
 
                 <div class="field">
-                    <label>Edad aproximada (obligatorio)</label>
+                    <label>Edad aproximada</label>
                     <input id="EdadAprox" value="@Model.EdadAprox" />
                 </div>
 
@@ -109,12 +109,12 @@
         {
             <div class="grid">
                 <div class="field">
-                    <label>Motivo de ingreso (obligatorio)</label>
+                    <label>Motivo de ingreso</label>
                     <input id="MotivoIngreso" value="@Model.MotivoIngreso" />
                 </div>
 
                 <div class="field">
-                    <label>Temperamento (obligatorio)</label>
+                    <label>Temperamento</label>
                     <select id="Temperamento">
                         <option value="">Seleccione...</option>
                         <option value="Docil" @(Model.Temperamento == "Docil" ? "selected" : "")>Dócil</option>
@@ -124,17 +124,17 @@
                 </div>
 
                 <div class="field">
-                    <label>Necesidades médicas inmediatas (obligatorio)</label>
+                    <label>Necesidades médicas inmediatas</label>
                     <input id="NecesidadesMedicas" value="@Model.NecesidadesMedicas" />
                 </div>
 
                 <div class="field">
-                    <label>Historial de vacunación (opcional)</label>
+                    <label>Historial de vacunación</label>
                     <input id="HistorialVacunas" value="@Model.HistorialVacunas" />
                 </div>
 
                 <div class="field" style="grid-column:1/-1;">
-                    <label>Descripción del estado de salud al momento de ingreso (obligatorio)</label>
+                    <label>Descripción del estado de salud al momento de ingreso</label>
                     <textarea id="EstadoSaludIngreso">@Model.EstadoSaludIngreso</textarea>
                 </div>
             </div>
@@ -150,17 +150,17 @@
         {
             <div class="grid">
                 <div class="field">
-                    <label>Nombre completo del rescatista (obligatorio)</label>
+                    <label>Nombre completo del rescatista</label>
                     <input id="RescatistaNombre" value="@Model.RescatistaNombre" />
                 </div>
 
                 <div class="field">
-                    <label>Teléfono (obligatorio)</label>
+                    <label>Teléfono</label>
                     <input id="RescatistaTelefono" value="@Model.RescatistaTelefono" />
                 </div>
 
                 <div class="field">
-                    <label>Correo (opcional)</label>
+                    <label>Correo</label>
                     <input id="RescatistaCorreo" value="@Model.RescatistaCorreo" />
                 </div>
             </div>
