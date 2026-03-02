@@ -61,7 +61,6 @@ function loadMeds(){
       var id = (m.code || m.id || "");
       var name = (m.name || "");
 
-      // Si tu endpoint actual se llama DeleteJson, déjalo así:
       var btn = "<button class='btn' type='button' onclick=\"del('"+ (m.id || "") +"')\">Eliminar</button>";
 
       $tb.append(
@@ -100,8 +99,6 @@ $("#frmAddMed").on("submit", function(e){
   });
 });
 
-// Ajusta este método al endpoint real que tengas hoy.
-// Si tu controller tiene DeactivateJson, cámbialo aquí.
 function del(id){
   $.ajax({
     url: "@Url.Action("DeleteJson","Meds")",

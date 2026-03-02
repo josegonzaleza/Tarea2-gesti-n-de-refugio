@@ -1,1 +1,12 @@
-﻿[{"email":"admin@refugio.com","password":"Admin123","role":"Admin"},{"email":"cuidador@refugio.com","password":"Cuidador123","role":"Cuidador"}]
+﻿[
+  {
+    "email": "admin@refugio.com",
+    "password": "Admin123",
+    "role": "Admin"
+  },
+  {
+    "email": "cuidador@refugio.com",
+    "password": "Cuidador123",
+    "role": "Cuidador"
+  }
+]
